@@ -43,6 +43,8 @@ spec:
       labels:
         app: {{ .Values.adService.name }}
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       {{- if .Values.serviceAccounts.create }}
       serviceAccountName: {{ .Values.adService.name }}
       {{- else }}
@@ -70,8 +72,6 @@ spec:
           privileged: false
           readOnlyRootFilesystem: true
         image: {{ .Values.images.adservice.repository }}:{{ .Values.images.adservice.tag | default .Chart.AppVersion }}
-        imagePullSecrets:
-        - name: ghcr-secret
         ports:
         - containerPort: 9555
         env:
