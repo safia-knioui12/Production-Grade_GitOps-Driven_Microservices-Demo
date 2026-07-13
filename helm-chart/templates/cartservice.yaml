@@ -47,6 +47,8 @@ spec:
       labels:
         app: {{ .Values.cartService.name }}
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       {{- if .Values.serviceAccounts.create }}
       serviceAccountName: {{ .Values.cartService.name }}
       {{- else }}
@@ -74,8 +76,6 @@ spec:
           privileged: false
           readOnlyRootFilesystem: true
         image: {{ .Values.images.cartservice.repository }}:{{ .Values.images.cartservice.tag | default .Chart.AppVersion }}
-        imagePullSecrets:
-        - name: ghcr-secret
         ports:
         - containerPort: 7070
         env:
