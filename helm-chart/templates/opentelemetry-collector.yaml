@@ -42,8 +42,6 @@ spec:
       labels:
         app: {{ .Values.opentelemetryCollector.name }}
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
       {{- if .Values.serviceAccounts.create }}
       serviceAccountName: {{ .Values.opentelemetryCollector.name }}
       {{- else }}
