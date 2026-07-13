@@ -74,6 +74,8 @@ spec:
           privileged: false
           readOnlyRootFilesystem: true
         image: {{ .Values.images.cartservice.repository }}:{{ .Values.images.cartservice.tag | default .Chart.AppVersion }}
+        imagePullSecrets:
+        - name: ghcr-secret
         ports:
         - containerPort: 7070
         env:
