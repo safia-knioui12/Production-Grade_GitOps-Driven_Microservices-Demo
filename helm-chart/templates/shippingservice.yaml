@@ -43,8 +43,6 @@ spec:
       labels:
         app: {{ .Values.shippingService.name }}
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
       {{- if .Values.serviceAccounts.create }}
       serviceAccountName: {{ .Values.shippingService.name }}
       {{- else }}
