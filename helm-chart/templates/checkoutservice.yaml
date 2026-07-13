@@ -43,6 +43,8 @@ spec:
       labels:
         app: {{ .Values.checkoutService.name }}
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       {{- if .Values.serviceAccounts.create }}
       serviceAccountName: {{ .Values.checkoutService.name }}
       {{- else }}
@@ -69,8 +71,6 @@ spec:
           privileged: false
           readOnlyRootFilesystem: true
         image: {{ .Values.images.checkoutservice.repository }}:{{ .Values.images.checkoutservice.tag | default .Chart.AppVersion }}
-        imagePullSecrets:
-        - name: ghcr-secret
         ports:
         - containerPort: 5050
         readinessProbe:
