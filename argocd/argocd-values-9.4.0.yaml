@@ -42,7 +42,7 @@ crds:
 global:
   # -- Default domain used by all components
   ## Used for ingresses, certificates, SSO, notifications, etc.
-  domain: argocd.example.com
+  domain: argocd.unicorn-smoked.online
 
   # -- Runtime class name for all components
   runtimeClassName: ""
@@ -2634,7 +2634,7 @@ server:
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
     hostnames:
-      - argocd.devopsdock.site
+      - argocd.unicorn-smoked.online
     # -- HTTPRoute rules configuration
     # @default -- `[]` (See [values.yaml])
     rules:
